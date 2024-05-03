@@ -18,3 +18,12 @@ sources:
       - name: orders
       - name: products
       - name: users
+  - name: snowflake_sample_data
+    description: msc data
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCDS_SF100TCL
+    tables:
+      - name: CUSTOMER
+      - name: STORE
+      - name: STORE_SALES
+      - name: ITEM

@@ -5,7 +5,7 @@ WITH products AS (
 		cost AS product_cost,
 		retail_price AS product_retail_price
 
-	FROM {{ ref('stg_ecommerce__products') }}
+	FROM {{ ref('stg_ecommerce__customer') }}
 )
 
 SELECT
@@ -28,5 +28,5 @@ SELECT
 	order_items.item_sale_price - products.product_cost AS item_profit,
 	products.product_retail_price - order_items.item_sale_price AS item_discount
 
-FROM {{ ref('stg_ecommerce__order_items') }} AS order_items
+FROM {{ ref('stg_ecommerce__item') }} AS order_items
 LEFT JOIN products ON order_items.product_id = products.product_id

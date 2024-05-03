@@ -26,5 +26,5 @@ SELECT
 	user_id,
 	MIN(created_at) AS first_order_created_at
 
-FROM {{ ref('stg_ecommerce__orders') }}
+FROM {{ ref('stg_ecommerce__customer') }}
 GROUP BY 1

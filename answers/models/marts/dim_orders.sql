@@ -15,7 +15,7 @@ order_item_measures AS (
 		SUM(IF(product_department = '{{department_name}}', item_sale_price, 0)) AS total_sold_{{department_name.lower()}}swear{% if not loop.last %},{% endif -%}
 		{% endfor %}
 
-	FROM {{ ref('int_ecommerce__order_items_products') }}
+	FROM {{ ref('stg_ecommerce__customer') }}
 	GROUP BY 1
 )
 
@@ -43,8 +43,8 @@ SELECT
 	-- a good way to demonstrate how to use an ephemeral materialisation
 	TIMESTAMP_DIFF(od.created_at, user_data.first_order_created_at, DAY) AS days_since_first_order
 
-FROM {{ ref('stg_ecommerce__orders') }} AS od
+FROM {{ ref('stg_ecommerce__store_sales') }} AS od
 LEFT JOIN order_item_measures AS om
 	ON od.order_id = om.order_id
-LEFT JOIN {{ ref('int_ecommerce__first_order_created') }} AS user_data
+LEFT JOIN {{ ref('stg_ecommerce__store') }} AS user_data
 	ON od.user_id = user_data.user_id

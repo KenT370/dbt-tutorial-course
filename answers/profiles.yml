@@ -3,12 +3,11 @@ answers:
   outputs:
     dev:
       type: snowflake
-      account: xz19767
+      account: giiotpf-ot29206
       #account: cmu-data
       
-
       # User/password auth
-      user: kentorres822@gmail.com
+      user: ken370
       password: Maxcasper1
 
       role: accountadmin
